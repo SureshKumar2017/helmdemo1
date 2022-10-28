@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "{{ include "demo1.fullname" . }}-test-connection"
+  labels:
+    {{- include "demo1.labels" . | nindent 4 }}
+  annotations:
+    "helm.sh/hook": test
+spec:
+  containers:
+    - name: demo1
+      image: 08111981/testdockerhub:demo1
+      command: ['wget']
+      args: ['{{ include "demo1.fullname" . }}:{{ .Values.service.port }}']
+  restartPolicy: Never

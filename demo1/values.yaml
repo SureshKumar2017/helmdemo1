@@ -1,0 +1,8 @@
+replicaCount: 5
+image:
+  repository: "08111981/testdockerhub"
+  tag: "demo1"
+  pullPolicy: IfNotPresent
+service:
+  type: NodePort
+  port: 30016
